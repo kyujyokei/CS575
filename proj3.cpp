@@ -4,21 +4,25 @@
 #include <omp.h>
 
 #define NUMT 1
-#define NUM foo
+#define NUM １
+
+void run ();
+
+
 
 struct s {
     float value;
     int pad[NUM];
 } Array[4];
 
-int foo = 0;
+
 
 
 int main(){
 
-    for (foo = 0 ; foo < 16 ; foo++){
-        run();
-    }
+    // for (foo = 0 ; foo < 16 ; foo++){
+    run();
+    // }
 
     return 0;
 }
@@ -32,7 +36,7 @@ void run (){
     int someBigNumber = 1000000000;
 
     double time0 = omp_get_wtime( );
-    #pragma omp parallel for default(none),shared(Array),
+    #pragma omp parallel for default(none),shared(Array,someBigNumber)
     for( int i = 0; i < 4; i++ ){
 
         for( int j = 0; j < someBigNumber; j++ ){
@@ -42,7 +46,7 @@ void run (){
         }
 
     }
-    double time0 = omp_get_wtime( );
+    double time1 = omp_get_wtime( );
 
     printf("Mega Operations completed per second: %8.2lf",someBigNumber*4 / time1-time0 / 1000000.);
 
