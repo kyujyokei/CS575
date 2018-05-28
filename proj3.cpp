@@ -4,7 +4,7 @@
 #include <omp.h>
 
 #define NUMT 1
-#define NUM １
+#define NUM 1
 
 void run ();
 
@@ -48,7 +48,7 @@ void run (){
     }
     double time1 = omp_get_wtime( );
 
-    printf("Mega Operations completed per second: %8.2lf",someBigNumber*4 / time1-time0 / 1000000.);
+    printf("%d threads NUM: %d Mega Operations: %8.2lf",NUMT, NUM, someBigNumber*4 / time1-time0 / 1000000.);
 
 }
 
